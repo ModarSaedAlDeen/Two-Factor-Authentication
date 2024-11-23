@@ -1,5 +1,6 @@
 ﻿
 
+using MauiKit.Views.Platx.HomePage;
 using MauiKit.Views.Samples;
 
 namespace MauiKit;
@@ -182,6 +183,10 @@ public partial class AppShell : Shell
         Routes.Add(nameof(SamplePageOne), typeof(SamplePageOne));
         Routes.Add(nameof(SamplePageTwo), typeof(SamplePageTwo));
         Routes.Add(nameof(SamplePageThree), typeof(SamplePageThree));
+
+        //Platx
+        Routes.Add(nameof(PlatxHomePage), typeof(PlatxHomePage));
+
 
         foreach (var item in Routes)
         {

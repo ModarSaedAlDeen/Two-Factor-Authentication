@@ -741,7 +741,8 @@
   <data name="LabelEwalletServicesPageDescription" xml:space="preserve">
     <value>Lorem ipsum dolot sit amet, consectetur adipiscing elit. Praesent et aliquet nunc. Sed ultricies sed augue sit amet maximus.</value>
   </data>
-  <data name="LabelEwalletStatisticsPage" xml:space="preserve">
+  <data name="LabelEwallet
+		" xml:space="preserve">
     <value>إحصائيات</value>
   </data>
   <data name="LabelEwalletStatisticsPageDescription" xml:space="preserve">

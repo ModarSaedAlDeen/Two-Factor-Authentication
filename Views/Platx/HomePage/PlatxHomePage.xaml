@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:BasePage
+    x:Class="MauiKit.Views.Platx.HomePage.PlatxHomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:charts="clr-namespace:MauiKit.Controls.Charts"
+    xmlns:controls="clr-namespace:MauiKit.Controls"
+    xmlns:handlers="clr-namespace:MauiKit.Handlers"
+    xmlns:helpers="clr-namespace:MauiKit.Helpers"
+    xmlns:local="clr-namespace:MauiKit"
+    xmlns:localization="clr-namespace:MauiKit.Resources.Translations"
+    xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+    xmlns:lvcore="clr-namespace:LiveChartsCore;assembly=LiveChartsCore"
+    xmlns:models="clr-namespace:MauiKit.Models"
+    xmlns:templates="clr-namespace:MauiKit.Views.Apps.Ewallet.Templates"
+    xmlns:viewmodels="clr-namespace:MauiKit.ViewModels.Platx.HomePage"
+    xmlns:views="clr-namespace:MauiKit.Views"
+    BackgroundColor="{DynamicResource White}">
+
+    <views:BasePage.BindingContext>
+        <viewmodels:PlatxHomePageViewModel />
+    </views:BasePage.BindingContext>
+
+    <views:BasePage.PageContent>
+        <ScrollView>
+            <Grid Padding="20" RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="{OnPlatform MacCatalyst='350', Default='350'}" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0" Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
+                    <!-- دائرة العد التنازلي -->
+                    <Frame
+        WidthRequest="150"
+        HeightRequest="150"
+        CornerRadius="75"
+        BorderColor="Black"
+        Padding="10"
+        HasShadow="False"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+                        <Grid>
+                            <!-- النص الداخلي (العد التنازلي) -->
+                            <Label
+                x:Name="CountdownLabel"
+                Text="30"
+                FontSize="40"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                TextColor="Black" />
+                        </Grid>
+                    </Frame>
+
+                    <!-- رسالة انتهاء العد -->
+                    <StackLayout
+        x:Name="ResendStack"
+        IsVisible="False"
+        Orientation="Horizontal"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Spacing="10">
+                        <Label
+        Text="إعادة الإرسال"
+        FontSize="18"
+        TextColor="Black"
+        FontAttributes="Bold"
+        VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnResendClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <ImageButton
+        Source="refresh.png"
+        WidthRequest="40"
+        HeightRequest="40">
+                            <ImageButton.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnResendClicked" />
+                            </ImageButton.GestureRecognizers>
+                        </ImageButton>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <VerticalStackLayout Grid.Row="1" Spacing="20">
+
+                    <!--  Statistics Graph  -->
+                    <Grid>
+                        <Picker
+          HorizontalOptions="Center"
+          ItemDisplayBinding="{Binding Duration}"
+          FontAttributes="Bold"
+          ItemsSource="{Binding DataSource}"
+          MinimumWidthRequest="70"
+          SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+          SelectedItem="{Binding DataSource[0], Mode=OneTime}" />
+                    </Grid>
+
+                    <CollectionView
+                        ItemsSource="{Binding TransactionLists}"
+                        SelectionMode="None"
+                        VerticalScrollBarVisibility="Always">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="1" Orientation="Vertical"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <templates:TransactionItemTemplate />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+                <controls:SimpleLoadingIndicator Grid.RowSpan="3" />
+            </Grid>
+        </ScrollView>
+    </views:BasePage.PageContent>
+
+</views:BasePage>

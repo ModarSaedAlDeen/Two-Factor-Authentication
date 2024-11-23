@@ -13,12 +13,12 @@
     xmlns:lvcore="clr-namespace:LiveChartsCore;assembly=LiveChartsCore"
     xmlns:models="clr-namespace:MauiKit.Models"
     xmlns:templates="clr-namespace:MauiKit.Views.Apps.Ewallet.Templates"
-    xmlns:viewmodels="clr-namespace:MauiKit.ViewModels"
+    xmlns:viewmodels="clr-namespace:MauiKit.ViewModels.Platx.HomePage"
     xmlns:views="clr-namespace:MauiKit.Views"
     BackgroundColor="{DynamicResource White}">
 
     <views:BasePage.BindingContext>
-        <viewmodels:StatisticsViewModel />
+        <viewmodels:PlatxHomePageViewModel />
     </views:BasePage.BindingContext>
 
     <views:BasePage.PageContent>

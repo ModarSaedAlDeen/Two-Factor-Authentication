@@ -16,6 +16,7 @@ using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using SkiaSharp;
 using MauiKit.Handlers;
+using MauiKit.Views.Platx.HomePage;
 
 
 namespace MauiKit
@@ -95,7 +96,8 @@ namespace MauiKit
             if (AppSettings.IsFirstLaunching)
             {
                 AppSettings.IsFirstLaunching = true; //Set to 'false' in production
-                MainPage = new NavigationPage(new StartPage());
+                //MainPage = new NavigationPage(new StartPage());
+                MainPage = new NavigationPage(new PlatxHomePage());
             }
             else
             {
