@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiKit.Views.Onboardings.StartPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MauiKit.Controls"
+    xmlns:localization="clr-namespace:MauiKit.Resources.Translations"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="White">
+
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <Grid RowDefinitions="Auto, *, Auto">
+
+            <Grid
+                Padding="30,50,30,20"
+                HorizontalOptions="Center"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+                RowSpacing="20"
+                TranslationY="50"
+                VerticalOptions="Start">
+
+                <!--  Logo  -->
+                <!--background color : {DynamicResource PrimaryColor}-->
+                
+                <Border
+                    Padding="0"
+                    Background="{DynamicResource AccentColor}" 
+                    HeightRequest="90"
+                    HorizontalOptions="Center"
+                    Stroke="{DynamicResource White}"
+                    StrokeShape="{RoundRectangle CornerRadius=18}"
+                    StrokeThickness="3"
+                    WidthRequest="90">
+                    <controls:RoundedCornerImage
+                        Background="{DynamicResource White}"
+                        HeightRequest="60"
+                        HorizontalOptions="Center"
+                        
+                        Stroke="Transparent"
+                        StrokeShape="{RoundRectangle CornerRadius=50}"
+                        VerticalOptions="Center"
+                        WidthRequest="60" />
+                </Border>
+
+                <!--  App Name  -->
+                <Label
+                    Grid.Row="1"
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource Title2}"
+                    Text="Platx " />
+
+                <!--  Welcome Title  -->
+                <Label
+                    Grid.Row="2"
+                    Margin="0,15,0,0"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource Title2}"
+                    Text="{localization:Translate StringAppWelcomeTitle}" />
+
+                <!--  Welcome Subtitle  -->
+                <Label
+                    Grid.Row="3"
+                    HorizontalTextAlignment="Center"
+                    Style="{DynamicResource AccentColor}"
+                    Text="{localization:Translate StringAppWelcomeSubtitle}" />
+
+                <!--  Version Tag  -->
+                <Border
+                    Grid.Row="4"
+                    Padding="15,5"
+                    Background="{DynamicResource AccentColor}"
+                    HorizontalOptions="Center"
+                    Stroke="Transparent"
+                    StrokeShape="{RoundRectangle CornerRadius='8'}">
+                    <Label
+                        FontSize="12"
+                        HorizontalOptions="Center"
+                        Text="Version 2.0"
+                        TextColor="{DynamicResource White}"
+                        VerticalOptions="Center" />
+                </Border>
+            </Grid>
+
+            <VerticalStackLayout
+                Grid.Row="2"
+                Padding="30"
+                HorizontalOptions="Fill"
+                Spacing="15"
+                VerticalOptions="End">
+                <Button
+                    Clicked="TakeTour_Clicked"
+                    CornerRadius="14"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{localization:Translate ButtonTakeTour}" />
+
+                <Button
+                    BackgroundColor="{DynamicResource PrimaryAccentColor}"
+                    Clicked="Skip_Clicked"
+                    CornerRadius="14"
+                    HeightRequest="50"
+                    Text="{localization:Translate ButtonSkip}"
+                    TextColor="{DynamicResource White}" />
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
