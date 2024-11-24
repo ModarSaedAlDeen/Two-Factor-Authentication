@@ -43,7 +43,7 @@ public class EwalletServices
                 IconColor = Color.FromArgb("#d54381"),
                 Title = "Salary",
                 Date = "3:05 PM - Aug 22, 2022",
-                Amount = 4789.89,
+                //                //Amount = 4789.89,
                 IsCredited = true
             },
             new TransactionData
@@ -52,7 +52,7 @@ public class EwalletServices
                 IconColor = Color.FromArgb("#af4aff"),
                 Title = "AirBNB Royalty",
                 Date = "3:05 PM - Aug 22, 2022",
-                Amount = 135.50,
+                                //Amount = 135.50,
                 IsCredited = false
             },
             new TransactionData
@@ -61,7 +61,7 @@ public class EwalletServices
                 IconColor = Color.FromArgb("#3e5aff"),
                 Title = "Food for lunch",
                 Date = "3:05 PM - Aug 22, 2022",
-                Amount = 22.50,
+                                //Amount = 22.50,
                 IsCredited = false
             },
             new TransactionData
@@ -70,7 +70,7 @@ public class EwalletServices
                 IconColor = Color.FromArgb("#7644ad"),
                 Title = "Netflix Subscription",
                 Date = "7:00 AM - Mar 22, 2023",
-                Amount = 519.99,
+                                //Amount = 519.99,
                 IsCredited = false
             },
             new TransactionData
@@ -79,7 +79,7 @@ public class EwalletServices
                 IconColor = Color.FromArgb("#7644ad"),
                 Title = "Arthur Kim",
                 Date = "7:00 AM - Mar 22, 2023",
-                Amount = 65,
+                                //Amount = 65,
                 IsCredited = false
             },
             new TransactionData
@@ -88,7 +88,7 @@ public class EwalletServices
                 IconColor = Color.FromArgb("#d54381"),
                 Title = "Nell Sanchez",
                 Date = "3:05 PM - Aug 22, 2022",
-                Amount = 350,
+                                //Amount = 350,
                 IsCredited = true
             },
             new TransactionData
@@ -97,7 +97,7 @@ public class EwalletServices
                 IconColor = Color.FromArgb("#3e5aff"),
                 Title = "Amelia Coleman",
                 Date = "3:05 PM - Aug 22, 2022",
-                Amount = 70.50,
+                                //Amount = 70.50,
                 IsCredited = false
             },
             new TransactionData
@@ -106,7 +106,7 @@ public class EwalletServices
                 IconColor = Color.FromArgb("#af4aff"),
                 Title = "Credit Card Bill",
                 Date = "3:05 PM - Aug 22, 2022",
-                Amount = 30.50,
+                                //Amount = 30.50,
                 IsCredited = false
             },
             new TransactionData
@@ -115,7 +115,7 @@ public class EwalletServices
                 IconColor = Color.FromArgb("#7644ad"),
                 Title = "Refund",
                 Date = "7:00 AM - Mar 22, 2023",
-                Amount = 35,
+                                //Amount = 35,
                 IsCredited = false
             },
             new TransactionData
@@ -124,7 +124,7 @@ public class EwalletServices
                 IconColor = Color.FromArgb("#d54381"),
                 Title = "Nell Sanchez",
                 Date = "3:05 PM - Aug 22, 2022",
-                Amount = 650,
+                                //Amount = 650,
                 IsCredited = true
             },
             new TransactionData
@@ -133,7 +133,7 @@ public class EwalletServices
                 IconColor = Color.FromArgb("#3e5aff"),
                 Title = "Chase Blair",
                 Date = "3:05 PM - Aug 22, 2022",
-                Amount = 20.50,
+                                //Amount = 20.50,
                 IsCredited = false
             },
             new TransactionData
@@ -142,7 +142,7 @@ public class EwalletServices
                 IconColor = Color.FromArgb("#af4aff"),
                 Title = "Credit Card Bill",
                 Date = "3:05 PM - Aug 22, 2022",
-                Amount = 80.50,
+                                //Amount = 80.50,
                 IsCredited = false
             },
             };

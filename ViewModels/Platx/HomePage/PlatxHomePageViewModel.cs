@@ -44,7 +44,7 @@ namespace MauiKit.ViewModels.Platx.HomePage
                 Date = "3:05 PM - Nov 23, 2024",
                 IsCredited = false
             },
-                      new TransactionData
+            new TransactionData
             {
                 ImageIcon = IonIcons.AndroidNotifications,
                 IconColor = Color.FromArgb("#FFE88F1A"),
@@ -52,7 +52,7 @@ namespace MauiKit.ViewModels.Platx.HomePage
                 Date = "6:05 PM - Nov 22, 2024",
                 IsCredited = false
             },
-                                new TransactionData
+                new TransactionData
             {
                 ImageIcon = IonIcons.AndroidNotifications,
                 IconColor = Color.FromArgb("#FFE88F1A"),
@@ -60,40 +60,40 @@ namespace MauiKit.ViewModels.Platx.HomePage
                 Date = "1:05 PM - Nov 22, 2024",
                 IsCredited = false
             },
-            new TransactionData
-            {
-                ImageIcon = MauiKitIcons.Camera,
-                IconColor = Color.FromArgb("#7644ad"),
-                Title = "Netflix Subscription",
-                Date = "7:00 AM - Mar 22, 2023",
-                IsCredited = false
-            },
-            new TransactionData
-            {
-                ImageIcon = MauiKitIcons.Receipt,
-                IconColor = Color.FromArgb("#d54381"),
-                Title = "Salary",
-                Date = "3:05 PM - Aug 22, 2022",
-                IsCredited = true
-            },
-            new TransactionData
-            {
-                ImageIcon = MauiKitIcons.Airballoon,
-                IconColor = Color.FromArgb("#af4aff"),
-                Title = "AirBNB Royalty",
-                Date = "3:05 PM - Aug 22, 2022",
-                IsCredited = false
-            },
+            //new TransactionData
+            //{
+            //    ImageIcon = MauiKitIcons.Camera,
+            //    IconColor = Color.FromArgb("#7644ad"),
+            //    Title = "Netflix Subscription",
+            //    Date = "7:00 AM - Mar 22, 2023",
+            //    IsCredited = false
+            //},
+            //new TransactionData
+            //{
+            //    ImageIcon = MauiKitIcons.Receipt,
+            //    IconColor = Color.FromArgb("#d54381"),
+            //    Title = "Salary",
+            //    Date = "3:05 PM - Aug 22, 2022",
+            //    IsCredited = true
+            //},
+            //new TransactionData
+            //{
+            //    ImageIcon = MauiKitIcons.Airballoon,
+            //    IconColor = Color.FromArgb("#af4aff"),
+            //    Title = "AirBNB Royalty",
+            //    Date = "3:05 PM - Aug 22, 2022",
+            //    IsCredited = false
+            //},
         };
 
-        //    WeekChart = new ObservableCollection<ISeries>
-        //{
-        //    new PieSeries<int> { Name = "Salary", Values = new List<int> { 2 }, MaxRadialColumnWidth = 60 },
-        //    new PieSeries<int> { Name = "Food & Drink", Values = new List<int> { 4 }, MaxRadialColumnWidth = 60 },
-        //    new PieSeries<int> { Name = "E-Wallet", Values = new List<int> { 1 }, MaxRadialColumnWidth = 60 },
-        //    new PieSeries<int> { Name = "Internet", Values = new List<int> { 4 }, MaxRadialColumnWidth = 60 },
-        //    new PieSeries<int> { Name = "Shopping", Values = new List<int> { 3 }, MaxRadialColumnWidth = 60 }
-        //};
+            //    WeekChart = new ObservableCollection<ISeries>
+            //{
+            //    new PieSeries<int> { Name = "Salary", Values = new List<int> { 2 }, MaxRadialColumnWidth = 60 },
+            //    new PieSeries<int> { Name = "Food & Drink", Values = new List<int> { 4 }, MaxRadialColumnWidth = 60 },
+            //    new PieSeries<int> { Name = "E-Wallet", Values = new List<int> { 1 }, MaxRadialColumnWidth = 60 },
+            //    new PieSeries<int> { Name = "Internet", Values = new List<int> { 4 }, MaxRadialColumnWidth = 60 },
+            //    new PieSeries<int> { Name = "Shopping", Values = new List<int> { 3 }, MaxRadialColumnWidth = 60 }
+            //};
         }
 
         private void MonthData()
@@ -187,14 +187,14 @@ namespace MauiKit.ViewModels.Platx.HomePage
             //},
         };
 
-        //    MonthChart = new ObservableCollection<ISeries>
-        //{
-        //    new PieSeries<int> { Name = "Salary", Values = new List<int> { 22 }, MaxRadialColumnWidth = 60 },
-        //    new PieSeries<int> { Name = "Food & Drink", Values = new List<int> { 10 }, MaxRadialColumnWidth = 60 },
-        //    new PieSeries<int> { Name = "E-Wallet", Values = new List<int> { 4 }, MaxRadialColumnWidth = 60 },
-        //    new PieSeries<int> { Name = "Internet", Values = new List<int> { 25 }, MaxRadialColumnWidth = 60 },
-        //    new PieSeries<int> { Name = "Shopping", Values = new List<int> { 35 }, MaxRadialColumnWidth = 60 }
-        //};
+            //    MonthChart = new ObservableCollection<ISeries>
+            //{
+            //    new PieSeries<int> { Name = "Salary", Values = new List<int> { 22 }, MaxRadialColumnWidth = 60 },
+            //    new PieSeries<int> { Name = "Food & Drink", Values = new List<int> { 10 }, MaxRadialColumnWidth = 60 },
+            //    new PieSeries<int> { Name = "E-Wallet", Values = new List<int> { 4 }, MaxRadialColumnWidth = 60 },
+            //    new PieSeries<int> { Name = "Internet", Values = new List<int> { 25 }, MaxRadialColumnWidth = 60 },
+            //    new PieSeries<int> { Name = "Shopping", Values = new List<int> { 35 }, MaxRadialColumnWidth = 60 }
+            //};
         }
 
         private void YearData()
@@ -203,14 +203,14 @@ namespace MauiKit.ViewModels.Platx.HomePage
         {
             new TransactionData
             {
-                ImageIcon = IonIcons.AndroidNotificationsNone,
+                ImageIcon = IonIcons.AndroidNotifications,
                 IconColor = Color.FromArgb("#FFE88F1A"),
                 Title = "Notification",
                 Date = "3:05 PM - Nov 23, 2023",
                 IsCredited = false
             },            new TransactionData
             {
-                ImageIcon = IonIcons.AndroidNotificationsNone,
+                ImageIcon = IonIcons.AndroidNotificationsOff,
                 IconColor = Color.FromArgb("#FFE88F1A"),
                 Title = "Notification",
                 Date = "22:35 PM - Jul 21, 2023",
@@ -324,14 +324,14 @@ namespace MauiKit.ViewModels.Platx.HomePage
             //},
         };
 
-        //    YearChart = new ObservableCollection<ISeries>
-        //{
-        //    new PieSeries<int> { Name = "Salary", Values = new List<int> { 230 }, MaxRadialColumnWidth = 60 },
-        //    new PieSeries<int> { Name = "Food & Drink", Values = new List<int> { 130 }, MaxRadialColumnWidth = 60 },
-        //    new PieSeries<int> { Name = "E-Wallet", Values = new List<int> { 70 }, MaxRadialColumnWidth = 60 },
-        //    new PieSeries<int> { Name = "Internet", Values = new List<int> { 350 }, MaxRadialColumnWidth = 60 },
-        //    new PieSeries<int> { Name = "Shopping", Values = new List<int> { 150 }, MaxRadialColumnWidth = 60 }
-        //};
+            //    YearChart = new ObservableCollection<ISeries>
+            //{
+            //    new PieSeries<int> { Name = "Salary", Values = new List<int> { 230 }, MaxRadialColumnWidth = 60 },
+            //    new PieSeries<int> { Name = "Food & Drink", Values = new List<int> { 130 }, MaxRadialColumnWidth = 60 },
+            //    new PieSeries<int> { Name = "E-Wallet", Values = new List<int> { 70 }, MaxRadialColumnWidth = 60 },
+            //    new PieSeries<int> { Name = "Internet", Values = new List<int> { 350 }, MaxRadialColumnWidth = 60 },
+            //    new PieSeries<int> { Name = "Shopping", Values = new List<int> { 150 }, MaxRadialColumnWidth = 60 }
+            //};
         }
 
         public ISeries[] LineSeries { get; set; } =

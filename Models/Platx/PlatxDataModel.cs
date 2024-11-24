@@ -64,7 +64,7 @@ public class TransactionData
     public string Category { get; set; }
     public string TransactionId { get; set; }
     public Color BackgroundColor { get; set; }
-    public double Amount { get; set; }
+    //public double Amount { get; set; }
     public string Date { get; set; }
     public bool IsCredited { get; set; }
 
