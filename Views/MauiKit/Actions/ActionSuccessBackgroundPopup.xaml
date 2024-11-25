@@ -48,7 +48,7 @@
             <Label
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
-                Text="{localization:Translate LabelSuccessDetails}"
+                Text="{Binding Message}"
                 TextColor="{DynamicResource White}" />
 
             <Button

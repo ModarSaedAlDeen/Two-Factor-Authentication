@@ -5,7 +5,7 @@ using Windows.Graphics;
 #endif
 
 #if ANDROID
-using Microsoft.Maui.Controls.Compatibility.Platform.Android; 
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 #endif
 
 #if IOS || MACCATALYST
@@ -17,15 +17,20 @@ using LiveChartsCore.SkiaSharpView;
 using SkiaSharp;
 using MauiKit.Handlers;
 using MauiKit.Views.Platx.HomePage;
+using Microsoft.Maui.Networking;
+using MauiKit.Controls.Commons;
 
 
 namespace MauiKit
 {
     public partial class App : Application
     {
+        private readonly IConnectivityService _connectivityService;
+
         public App()
         {
             InitializeComponent();
+
 
             #region Handlers
 
@@ -35,8 +40,8 @@ namespace MauiKit
                 if (view is BorderlessEntry)
                 {
 #if __ANDROID__
-                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
-                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+                    handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                    handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
 #elif __IOS__ || __MACCATALYST__
                     handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
                     handler.PlatformView.Layer.BorderWidth = 0;
@@ -56,8 +61,8 @@ namespace MauiKit
                 if (view is BorderlessEditor)
                 {
 #if __ANDROID__
-                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
-                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+                    handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                    handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
 #elif __IOS__ || __MACCATALYST__
                     handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
                     handler.PlatformView.Layer.BorderWidth = 0;
@@ -76,8 +81,8 @@ namespace MauiKit
                 if (view is BorderlessPicker)
                 {
 #if ANDROID
-                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                    handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+                    handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
 #elif __IOS__ || __MACCATALYST__
                     handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
                     handler.PlatformView.Layer.BorderWidth = 0;
@@ -93,113 +98,129 @@ namespace MauiKit
 
             #endregion
 
-            if (AppSettings.IsFirstLaunching)
+
+
+            //if (AppSettings.IsFirstLaunching)
+            //{
+            //    AppSettings.IsFirstLaunching = true; //Set to 'false' in production
+            //    //MainPage = new NavigationPage(new StartPage());
+            //    MainPage = new NavigationPage(new PlatxHomePage());
+            //}
+            //else
+            //{
+            //    MainPage = GetMainPage();
+            //}
+            // تهيئة خدمة الاتصال
+            _connectivityService = new ConnectivityService();
+
+            // التحقق من الاتصال بالإنترنت
+            if (!_connectivityService.IsInternetAvailable())
             {
-                AppSettings.IsFirstLaunching = true; //Set to 'false' in production
-                //MainPage = new NavigationPage(new StartPage());
-                MainPage = new NavigationPage(new PlatxHomePage());
+                // إذا لم يكن هناك اتصال، عرض صفحة إعادة المحاولة
+                MainPage = new NavigationPage(new RetryPage());
             }
             else
             {
-                MainPage = GetMainPage();
+                // إذا كان الاتصال متوفرًا، الانتقال إلى الصفحة الرئيسية
+                MainPage = new NavigationPage(new PlatxHomePage()); // استبدل MainPage بالصفحة الرئيسية لتطبيقك
             }
         }
 
-        public static Page GetMainPage()
-        {            
-            return new AppFlyout();
-        }
-
-        public void ChangeFlyoutDirection()
-        {
-            var flyoutPage = (AppFlyout)MainPage;
-            if (AppSettings.IsRTLLanguage) 
+            public static Page GetMainPage()
             {
-                flyoutPage.Flyout.FlowDirection = FlowDirection.RightToLeft;
-                //flyoutPage.Detail.FlowDirection = FlowDirection.RightToLeft;
-                flyoutPage.FlowDirection = FlowDirection.RightToLeft;
+                return new AppFlyout();
             }
-            else
-            {
-                flyoutPage.Flyout.FlowDirection = FlowDirection.LeftToRight;
-                //flyoutPage.Detail.FlowDirection = FlowDirection.LeftToRight;
-                flyoutPage.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
 
-        protected override void OnStart()
-        {
-            base.OnStart();
-
-            var appLanguageCode = string.Empty;
-            if (AppSettings.SelectedLanguageItem == null)
+            public void ChangeFlyoutDirection()
             {
-                var systemLanguageCode = CultureInfo.CurrentUICulture.Name;
-                if (AppSettings.Languages.Any(x => x.Code.Equals(systemLanguageCode, StringComparison.OrdinalIgnoreCase)))
-                    appLanguageCode = systemLanguageCode;
+                var flyoutPage = (AppFlyout)MainPage;
+                if (AppSettings.IsRTLLanguage)
+                {
+                    flyoutPage.Flyout.FlowDirection = FlowDirection.RightToLeft;
+                    //flyoutPage.Detail.FlowDirection = FlowDirection.RightToLeft;
+                    flyoutPage.FlowDirection = FlowDirection.RightToLeft;
+                }
                 else
-                    appLanguageCode = AppSettings.DefaultLanguageCode;
-            }
-            else
-                appLanguageCode = AppSettings.LanguageCodeSelected;
-
-            LocalizationResourceManager.Instance.SetCulture(new CultureInfo(appLanguageCode));
-
-            if (AppSettings.IsRTLLanguage || CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
-            {
-                FlowDirectionManager.Instance.FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                FlowDirectionManager.Instance.FlowDirection = FlowDirection.LeftToRight;
+                {
+                    flyoutPage.Flyout.FlowDirection = FlowDirection.LeftToRight;
+                    //flyoutPage.Detail.FlowDirection = FlowDirection.LeftToRight;
+                    flyoutPage.FlowDirection = FlowDirection.LeftToRight;
+                }
             }
 
-            AppTheme currentTheme = Application.Current.RequestedTheme;
-
-            if (AppSettings.IsUseSystemTheme)
+            protected override async void OnStart()
             {
-                if (currentTheme == AppTheme.Dark)
-                    Application.Current.Resources.ApplyDarkTheme();
+                base.OnStart();
+
+                var appLanguageCode = string.Empty;
+                if (AppSettings.SelectedLanguageItem == null)
+                {
+                    var systemLanguageCode = CultureInfo.CurrentUICulture.Name;
+                    if (AppSettings.Languages.Any(x => x.Code.Equals(systemLanguageCode, StringComparison.OrdinalIgnoreCase)))
+                        appLanguageCode = systemLanguageCode;
+                    else
+                        appLanguageCode = AppSettings.DefaultLanguageCode;
+                }
                 else
-                    Application.Current.Resources.ApplyLightTheme();
-            }
-            else
-            {
-                if (AppSettings.IsDarkMode)
-                    Application.Current.Resources.ApplyDarkTheme();
+                    appLanguageCode = AppSettings.LanguageCodeSelected;
+
+                LocalizationResourceManager.Instance.SetCulture(new CultureInfo(appLanguageCode));
+
+                if (AppSettings.IsRTLLanguage || CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+                {
+                    FlowDirectionManager.Instance.FlowDirection = FlowDirection.RightToLeft;
+                }
                 else
-                    Application.Current.Resources.ApplyLightTheme();
+                {
+                    FlowDirectionManager.Instance.FlowDirection = FlowDirection.LeftToRight;
+                }
+
+                AppTheme currentTheme = Application.Current.RequestedTheme;
+
+                if (AppSettings.IsUseSystemTheme)
+                {
+                    if (currentTheme == AppTheme.Dark)
+                        Application.Current.Resources.ApplyDarkTheme();
+                    else
+                        Application.Current.Resources.ApplyLightTheme();
+                }
+                else
+                {
+                    if (AppSettings.IsDarkMode)
+                        Application.Current.Resources.ApplyDarkTheme();
+                    else
+                        Application.Current.Resources.ApplyLightTheme();
+                }
+
+                ThemeUtil.ApplyColorSet(AppSettings.SelectedPrimaryColorIndex);
+
+                LiveCharts.Configure(config =>
+                    config
+                        // you can override the theme 
+                        //.AddDarkTheme()  
+
+                        // In case you need a non-Latin based font, you must register a typeface for SkiaSharp
+                        //.HasGlobalSKTypeface(SKFontManager.Default.MatchCharacter('汉')) // <- Chinese 
+                        //.HasGlobalSKTypeface(SKFontManager.Default.MatchCharacter('あ')) // <- Japanese 
+                        //.HasGlobalSKTypeface(SKFontManager.Default.MatchCharacter('헬')) // <- Korean 
+                        //.HasGlobalSKTypeface(SKFontManager.Default.MatchCharacter('Ж'))  // <- Russian 
+
+                        //.HasGlobalSKTypeface(SKFontManager.Default.MatchCharacter('أ'))  // <- Arabic 
+                        //.UseRightToLeftSettings() // Enables right to left tooltips 
+
+                        // finally register your own mappers
+                        // you can learn more about mappers at:
+                        // https://livecharts.dev/docs/maui/2.0.0-rc2/Overview.Mappers
+
+                        // here we use the index as X, and the population as Y 
+                        .HasMap<City>((city, index) => new(index, city.Population))
+                // .HasMap<Foo>( .... ) 
+                // .HasMap<Bar>( .... ) 
+                );
+
             }
 
-            ThemeUtil.ApplyColorSet(AppSettings.SelectedPrimaryColorIndex);
-
-            LiveCharts.Configure(config =>
-                config
-                    // you can override the theme 
-                    //.AddDarkTheme()  
-
-                    // In case you need a non-Latin based font, you must register a typeface for SkiaSharp
-                    //.HasGlobalSKTypeface(SKFontManager.Default.MatchCharacter('汉')) // <- Chinese 
-                    //.HasGlobalSKTypeface(SKFontManager.Default.MatchCharacter('あ')) // <- Japanese 
-                    //.HasGlobalSKTypeface(SKFontManager.Default.MatchCharacter('헬')) // <- Korean 
-                    //.HasGlobalSKTypeface(SKFontManager.Default.MatchCharacter('Ж'))  // <- Russian 
-
-                    //.HasGlobalSKTypeface(SKFontManager.Default.MatchCharacter('أ'))  // <- Arabic 
-                    //.UseRightToLeftSettings() // Enables right to left tooltips 
-
-                    // finally register your own mappers
-                    // you can learn more about mappers at:
-                    // https://livecharts.dev/docs/maui/2.0.0-rc2/Overview.Mappers
-
-                    // here we use the index as X, and the population as Y 
-                    .HasMap<City>((city, index) => new(index, city.Population))
-            // .HasMap<Foo>( .... ) 
-            // .HasMap<Bar>( .... ) 
-            );
+            public record City(string Name, double Population);
 
         }
-
-        public record City(string Name, double Population);
-
     }
-}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiKit.Controls.Commons.RetryPage"
+             xmlns:animation="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+             xmlns:controls="clr-namespace:MauiKit.Controls"
+             xmlns:handlers="clr-namespace:MauiKit.Handlers"
+             xmlns:localization="clr-namespace:MauiKit.Resources.Translations"
+             xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+             xmlns:views="clr-namespace:MauiKit.Views"
+             BackgroundColor="{DynamicResource White}">
+
+
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="20">
+
+
+        <Label
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Style="{StaticResource Title1}"
+                Text="{localization:Translate LabelFailed}"
+                TextColor="{DynamicResource Red}" />
+
+        <Label
+                FontFamily="FaPro"
+                FontSize="60"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{x:Static views:FaPro.WifiSlash}"
+                TextColor="{DynamicResource Red}"
+                VerticalOptions="Center" />
+
+        <Label
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{localization:Translate NoInternetConnection}"
+                TextColor="{DynamicResource Red}" />
+
+        <Button
+                BackgroundColor="{DynamicResource Red}"
+                Command="{Binding RetryCommand}"
+                CornerRadius="14"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                Text="{localization:Translate Retry}"
+                TextColor="{DynamicResource White}"
+                WidthRequest="200" />
+    </StackLayout>
+
+
+</ContentPage>
+
+<!--<?xml version="1.0" encoding="utf-8" ?>
+
+        <StackLayout
+            Padding="20,30"
+            Spacing="16"
+            VerticalOptions="Center">
+           
+
+
+        </StackLayout>
+    </Border>
+</rg:PopupPage>-->

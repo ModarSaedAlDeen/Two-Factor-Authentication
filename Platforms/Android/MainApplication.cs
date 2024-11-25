@@ -13,4 +13,5 @@ namespace MauiKit
 
         protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
     }
+
 }

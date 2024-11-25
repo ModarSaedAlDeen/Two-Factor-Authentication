@@ -157,5 +157,7 @@ namespace MauiKit.Views
         public const string WindowMaximize = "\uf2d0";
         public const string WindowMinimize = "\uf2d1";
         public const string WindowRestore = "\uf2d2";
+        public const string Wifi = "\uf1eb";
+
     }
 }
