@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiKit.Controls.Commons.UpdatePage"
+             xmlns:animation="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+             xmlns:controls="clr-namespace:MauiKit.Controls"
+             xmlns:handlers="clr-namespace:MauiKit.Handlers"
+             xmlns:localization="clr-namespace:MauiKit.Resources.Translations"
+             xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+             xmlns:views="clr-namespace:MauiKit.Views"
+             BackgroundColor="{DynamicResource White}">
+    
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="20">
+
+        <!-- النص الافتراضي للرسالة -->
+        <Label x:Name="UpdateMessage"
+               Text="{localization:Translate Warning}"
+               FontAttributes="Bold"
+               Style="{StaticResource Title1}"
+               TextColor="{DynamicResource Red}"
+               HorizontalTextAlignment="Center"
+               IsVisible="False" />
+        <Label
+                FontFamily="FaPro"
+                FontSize="60"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{x:Static views:FaPro.EngineWarning}"
+                TextColor="{DynamicResource Red}"
+                VerticalOptions="Center" />
+
+
+        <Label x:Name="OptionalUpdateMessage"
+               Text="{localization:Translate OptionalVersionUpdate}"
+               FontSize="18"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               TextColor="{DynamicResource Red}"
+               IsVisible="False" />
+
+
+        <Label x:Name="ForceUpdateMessage"
+               Text="{localization:Translate ForceUpdateMessage}"
+               FontSize="18"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               TextColor="{DynamicResource Red}"
+               IsVisible="False" />
+
+        <Button
+                BackgroundColor="{DynamicResource Red}"
+                Margin="0,50,0,0"
+                Clicked="OnUpdateClicked"
+                CornerRadius="14"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                Text="{localization:Translate ButtonUpdate}"
+                TextColor="{DynamicResource White}"
+                WidthRequest="200" />
+
+        <Button
+                x:Name="ContinueButton"
+                BackgroundColor="{DynamicResource Orange}"
+                Margin="0,10,0,0"
+                Clicked="OnContinueClicked"
+                CornerRadius="14"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                Text="{localization:Translate ButtonContinue}"
+                TextColor="{DynamicResource White}"
+                WidthRequest="200"
+                IsVisible="False" />
+        
+        <Button
+                BackgroundColor="{DynamicResource Red}"
+                Margin="0,50,0,0"
+                Clicked="OnExitAppClicked"
+                CornerRadius="14"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                Text="{localization:Translate ButtonClose}"
+                TextColor="{DynamicResource White}"
+                WidthRequest="200"
+                IsVisible="False" />
+
+    </StackLayout>
+</ContentPage>
+
+

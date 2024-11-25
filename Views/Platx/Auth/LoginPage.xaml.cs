@@ -9,10 +9,16 @@ public partial class LoginPage : ContentPage
 
     private async void LoginButtonClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new PasswordVerificationPage());
-        //Application.Current.MainPage = new DemoStartPage();
-
+        if (Application.Current.MainPage is NavigationPage navPage)
+        {
+            await navPage.PushAsync(new PasswordVerificationPage());
+        }
+        else
+        {
+            Application.Current.MainPage = new NavigationPage(new PasswordVerificationPage());
+        }
     }
+
     private async void Button_Clicked(object sender, EventArgs e)
     {
         //await Navigation.PushAsync(new ForgotPasswordPage());

@@ -46,19 +46,4 @@
                 TextColor="{DynamicResource White}"
                 WidthRequest="200" />
     </StackLayout>
-
-
 </ContentPage>
-
-<!--<?xml version="1.0" encoding="utf-8" ?>
-
-        <StackLayout
-            Padding="20,30"
-            Spacing="16"
-            VerticalOptions="Center">
-           
-
-
-        </StackLayout>
-    </Border>
-</rg:PopupPage>-->

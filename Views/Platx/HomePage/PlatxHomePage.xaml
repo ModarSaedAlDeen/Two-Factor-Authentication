@@ -96,8 +96,8 @@
           SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
           SelectedItem="{Binding DataSource[0], Mode=OneTime}" />
                     </Grid>
-
                     <CollectionView
+                        HorizontalOptions="Center" VerticalOptions="Center"
                         ItemsSource="{Binding TransactionLists}"
                         SelectionMode="None"
                         VerticalScrollBarVisibility="Always">

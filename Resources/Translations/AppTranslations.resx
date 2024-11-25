@@ -2046,4 +2046,17 @@ Please try to connect to the network to complete the process</value>
   <data name="Retry" xml:space="preserve">
     <value>Retry</value>
   </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning!</value>
+  </data>
+  <data name="OptionalVersionUpdate" xml:space="preserve">
+    <value>New update available. Would you like to update?</value>
+  </data>
+  <data name="ButtonUpdate" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="ForceUpdateMessage" xml:space="preserve">
+    <value>You should update application!
+Please enter update to countiune your proccess</value>
+  </data>
 </root>

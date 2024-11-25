@@ -19,6 +19,7 @@ using MauiKit.Handlers;
 using MauiKit.Views.Platx.HomePage;
 using Microsoft.Maui.Networking;
 using MauiKit.Controls.Commons;
+using Microsoft.Maui.Storage;
 
 
 namespace MauiKit
@@ -26,7 +27,8 @@ namespace MauiKit
     public partial class App : Application
     {
         private readonly IConnectivityService _connectivityService;
-
+        private readonly IMaintenanceService _maintenanceService;
+        private readonly IUpdateService _updateService;
         public App()
         {
             InitializeComponent();
@@ -98,35 +100,47 @@ namespace MauiKit
 
             #endregion
 
-
-
-            //if (AppSettings.IsFirstLaunching)
-            //{
-            //    AppSettings.IsFirstLaunching = true; //Set to 'false' in production
-            //    //MainPage = new NavigationPage(new StartPage());
-            //    MainPage = new NavigationPage(new PlatxHomePage());
-            //}
-            //else
-            //{
-            //    MainPage = GetMainPage();
-            //}
             // تهيئة خدمة الاتصال
             _connectivityService = new ConnectivityService();
-
-            // التحقق من الاتصال بالإنترنت
+            _maintenanceService = new MaintenanceService();
+            _updateService = new UpdateService();
+            CheckAppStatus();
+        }
+        private void CheckAppStatus()
+        {
             if (!_connectivityService.IsInternetAvailable())
             {
-                // إذا لم يكن هناك اتصال، عرض صفحة إعادة المحاولة
+                // عرض صفحة إعادة المحاولة إذا لم يكن هناك اتصال
                 MainPage = new NavigationPage(new RetryPage());
+                return;
             }
-            else
-            {
-                // إذا كان الاتصال متوفرًا، الانتقال إلى الصفحة الرئيسية
-                MainPage = new NavigationPage(new PlatxHomePage()); // استبدل MainPage بالصفحة الرئيسية لتطبيقك
-            }
-        }
 
-            public static Page GetMainPage()
+            if (_maintenanceService.IsUnderMaintenance())
+            {
+                // عرض واجهة الصيانة
+                MainPage = new NavigationPage(new MaintenancePage());
+                return;
+            }
+
+            var updateStatus = _updateService.CheckForUpdate();
+            if (updateStatus.IsUpdateRequired)
+            {
+                // عرض واجهة التحديث
+                MainPage = new NavigationPage(new UpdatePage(updateStatus.IsMandatory));
+                return;
+            }
+            // التحقق من إذا كانت هذه أول مرة يتم فيها فتح التطبيق
+            if (!Preferences.ContainsKey("IsIntroShown") || !Preferences.Get("IsIntroShown", false))
+            {
+                // عرض صفحة Intro App
+                MainPage = new NavigationPage(new StartPage());
+                Preferences.Set("IsIntroShown", true); // تحديث الحالة لتجنب عرضها مرة أخرى
+                return;
+            }
+            // إذا كان كل شيء على ما يرام، انتقل للصفحة الرئيسية
+            MainPage = new NavigationPage(new LoginPage());
+        }
+        public static Page GetMainPage()
             {
                 return new AppFlyout();
             }
