@@ -21,6 +21,25 @@
         <viewmodels:PlatxHomePageViewModel />
     </views:BasePage.BindingContext>
 
+
+    <views:BasePage.ToolbarItems>
+        <ToolbarItem
+            Clicked="OnSettingsToolbarItemIsClicked"
+            Order="Primary"
+            Priority="0">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="MaterialDesign"
+                    Glyph="{x:Static views:MaterialDesignIcons.Settings}"
+                    Size="{OnPlatform Android='25',
+                                      iOS='30',
+                                      WinUI='45',
+                                      MacCatalyst='40'}"
+                    Color="{DynamicResource BaseTextColor}" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </views:BasePage.ToolbarItems>
+
     <views:BasePage.PageContent>
         <ScrollView>
             <Grid Padding="20" RowSpacing="20">

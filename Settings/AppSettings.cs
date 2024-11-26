@@ -14,11 +14,11 @@ public class AppSettings
     {
         new LanguageSelectItem { Code ="en-US", Flag="flag_en.png", Name = "English (United State)", IsRTL = false },
         new LanguageSelectItem { Code ="ar-AE", Flag="flag_ar.png", Name = "Arabic (U.A.E.)", IsRTL = true },
-        new LanguageSelectItem { Code ="de-DE", Flag="flag_de.png", Name = "German (Germany)", IsRTL = false },
-        new LanguageSelectItem { Code ="es-ES", Flag="flag_es.png", Name = "Spanish (Spain)", IsRTL = false },
-        new LanguageSelectItem { Code ="fr-FR", Flag="flag_fr.png", Name = "French (France)", IsRTL = false },
-        new LanguageSelectItem { Code ="nl-NL", Flag="flag_nl.png", Name = "Dutch (Netherlands)", IsRTL = false },
-        new LanguageSelectItem { Code ="pt-PT", Flag="flag_pt.png", Name = "Portuguese (Portugal)", IsRTL = false },
+        //new LanguageSelectItem { Code ="de-DE", Flag="flag_de.png", Name = "German (Germany)", IsRTL = false },
+        //new LanguageSelectItem { Code ="es-ES", Flag="flag_es.png", Name = "Spanish (Spain)", IsRTL = false },
+        //new LanguageSelectItem { Code ="fr-FR", Flag="flag_fr.png", Name = "French (France)", IsRTL = false },
+        //new LanguageSelectItem { Code ="nl-NL", Flag="flag_nl.png", Name = "Dutch (Netherlands)", IsRTL = false },
+        //new LanguageSelectItem { Code ="pt-PT", Flag="flag_pt.png", Name = "Portuguese (Portugal)", IsRTL = false },
     };
     public static string DefaultLanguageCode = "en-US";
 
@@ -27,7 +27,7 @@ public class AppSettings
         get => PreferencesHelpers.Get(nameof(SelectedLanguageItem), default(LanguageSelectItem));
         set => PreferencesHelpers.Set(nameof(SelectedLanguageItem), value);
     }
-
+    
     public static string LanguageCodeSelected
     {
         get => Preferences.Get(nameof(LanguageCodeSelected), DefaultLanguageCode);

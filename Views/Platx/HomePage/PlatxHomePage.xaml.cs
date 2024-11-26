@@ -31,7 +31,7 @@ public partial class PlatxHomePage : BasePage
         CountdownLabel.Text = _countdownValue.ToString();
         ResendStack.IsVisible = false;
 
-        _timer = new Timer(1000); // ÚÏ ÊäÇÒáí ßá ËÇäíÉ
+        _timer = new Timer(1000); // 
         _timer.Elapsed += OnCountdownElapsed;
         _timer.Start();
     }
@@ -40,7 +40,6 @@ public partial class PlatxHomePage : BasePage
     {
         _countdownValue--;
 
-        // ÇáÊÍÏíË Úáì æÇÌåÉ ÇáãÓÊÎÏã
         MainThread.BeginInvokeOnMainThread(() =>
         {
             if (_countdownValue > 0)
@@ -65,5 +64,10 @@ public partial class PlatxHomePage : BasePage
     {
         base.OnDisappearing();
         _timer?.Stop();
+    }
+    private async void OnSettingsToolbarItemIsClicked(object sender, EventArgs e)
+    {
+        //await PopupNavigation.Instance.PushAsync(new ThemeSettingsPopupPage());
+        await Navigation.PushModalAsync(new ThemeSettingsPage());
     }
 }

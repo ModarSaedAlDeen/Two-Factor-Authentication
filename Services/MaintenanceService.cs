@@ -13,11 +13,9 @@ namespace MauiKit.Services
 
     public class MaintenanceService : IMaintenanceService
     {
-        // التحكم بحالة الصيانة ديناميكياً
         public bool IsUnderMaintenance()
         {
-            // تعديل القيمة هنا لتجربة الصيانة
-            return false; // true إذا كان التطبيق تحت الصيانة
+            return false; // Is there any block for app?
         }
     }
 }

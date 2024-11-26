@@ -13,12 +13,11 @@ namespace MauiKit.Services
 
     public class UpdateService : IUpdateService
     {
-        // التحكم بحالة التحديث ديناميكياً
         public (bool IsUpdateRequired, bool IsMandatory) CheckForUpdate()
         {
-            // تعديل القيم هنا لتجربة حالات التحديث
-            bool isUpdateRequired = false; // هل التحديث مطلوب؟
-            bool isMandatory = false;    // هل التحديث إجباري؟
+            
+            bool isUpdateRequired = true; // Is there optimal update?
+            bool isMandatory = false;    // Is there force update?
 
             return (isUpdateRequired, isMandatory);
         }
