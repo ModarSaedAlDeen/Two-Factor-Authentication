@@ -85,7 +85,7 @@
 
     <!--  ENTRIES AND EDITORS COMMON PROPERTIES  -->
     <Color x:Key="PlaceholderColor">#6E6E6E</Color>
-    <Color x:Key="EntryAndEditorsBackgroundColor">#222831</Color>
+    <Color x:Key="EntryAndEditorsBackgroundColor">#353b45</Color>
     <Color x:Key="EntryAndEditorsBorderColor">#222831</Color>
 
     <!--  MAIN MENU COLORS  -->

@@ -41,7 +41,7 @@
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 Text="{x:Static views:MaterialDesignIcons.CheckBox}"
-                TextColor="{DynamicResource OkColor}"
+                TextColor="{DynamicResource PrimaryColor}"
                 VerticalOptions="Center" />
 
             <Label
@@ -50,7 +50,7 @@
                 Text="{localization:Translate LabelSuccessDetails}" />
 
             <Button
-                BackgroundColor="{DynamicResource OkColor}"
+                BackgroundColor="{DynamicResource PrimaryColor}"
                 Clicked="GoBack_Clicked"
                 CornerRadius="14"
                 FontAttributes="Bold"

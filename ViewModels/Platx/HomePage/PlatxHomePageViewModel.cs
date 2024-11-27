@@ -8,6 +8,7 @@ using LiveChartsCore.SkiaSharpView.Painting.Effects;
 using LiveChartsCore.Measure;
 using MauiKit.Controls.Charts;
 using LiveChartsCore.Kernel.Sketches;
+using MauiKit.Views.Platx.HomePage;
 
 namespace MauiKit.ViewModels.Platx.HomePage
 {
@@ -15,22 +16,66 @@ namespace MauiKit.ViewModels.Platx.HomePage
     {
         public PlatxHomePageViewModel()
         {
-            WeekData();
-            MonthData();
-            YearData();
-            ChartData = new ObservableCollection<ISeries>();
-            DataSource = new ObservableCollection<TransactionData>()
+            LoadData();
+        }
+        // البيانات الكاملة
+        private ObservableCollection<TransactionData> _allTransactionLists;
+        public ObservableCollection<TransactionData> AllTransactionLists
         {
-            new TransactionData() { Duration = "Week" },
-            new TransactionData() { Duration = "Month" },
-            new TransactionData() { Duration = "Year" },
+            get => _allTransactionLists;
+            private set => SetProperty(ref _allTransactionLists, value);
+        }
+
+        // عرض آخر 4 إشعارات فقط
+        private ObservableCollection<TransactionData> _latestTransactionLists;
+        public ObservableCollection<TransactionData> LatestTransactionLists
+        {
+            get => _latestTransactionLists;
+            private set => SetProperty(ref _latestTransactionLists, value);
+        }
+        // تحميل البيانات
+        private void LoadData()
+        {
+            AllTransactionLists = new ObservableCollection<TransactionData>
+        {
+            new TransactionData { Title = "Notification 1", Date = "3:05 PM - Nov 23, 2024" ,ImageIcon = IonIcons.AndroidNotifications,},
+            new TransactionData { Title = "Notification 2", Date = "6:05 PM - Nov 22, 2024" ,ImageIcon = IonIcons.AndroidNotifications,},
+            new TransactionData { Title = "Notification 3", Date = "1:05 PM - Nov 22, 2024" ,ImageIcon = IonIcons.AndroidNotifications,},
+            new TransactionData { Title = "Notification 4", Date = "9:30 AM - Nov 21, 2024" ,ImageIcon = IonIcons.AndroidNotifications,},
+            new TransactionData { Title = "Notification 5", Date = "5:20 PM - Nov 20, 2024" ,ImageIcon = IonIcons.AndroidNotifications,},
         };
 
-            TransactionLists = WeekListItems;
-            ChartData = WeekChart;
-
-            //UpdateIncomeExpenseData();
+            UpdateLatestTransactions();
         }
+        // تحديث آخر 4 إشعارات
+        private void UpdateLatestTransactions()
+        {
+            LatestTransactionLists = new ObservableCollection<TransactionData>(
+                AllTransactionLists.Take(4));
+        }
+
+        // الأمر لعرض جميع الإشعارات
+        public ICommand ViewMoreCommand => new Command(async () =>
+        {
+            try
+            {
+                // تحقق من وجود Navigation قبل التنقل
+                if (Application.Current.MainPage is NavigationPage navigationPage)
+                {
+                    // تمرير قائمة الإشعارات إلى الصفحة الجديدة
+                    await navigationPage.Navigation.PushAsync(new ViewAllFactorAuthNotification(AllTransactionLists));
+                }
+                else
+                {
+                    Console.WriteLine("NavigationPage is not set as MainPage.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Navigation failed: {ex.Message}");
+            }
+        });
+
 
         private void WeekData()
         {

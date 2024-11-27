@@ -19,6 +19,7 @@
     <Color x:Key="Primary20Color">#381A73E8</Color>
     <Color x:Key="Primary10Color">#1A1A73E8</Color>
 
+    <!--new colors-->
     <Color x:Key="SecondaryGradient">#9683FC</Color>
     <Color x:Key="AccentColor">#FFE88F1A</Color>
     <Color x:Key="LightOrangeColor">#FFE99F5F</Color>

@@ -40,7 +40,8 @@ public partial class UpdatePage : ContentPage
     private void OnContinueClicked(object sender, EventArgs e)
     {
         // «·«‰ ﬁ«· ≈·Ï «·’›Õ… «·—∆Ì”Ì…
-        Application.Current.MainPage = new NavigationPage(new ForgotPasswordPage());
+        //Application.Current.MainPage = new NavigationPage(new ForgotPasswordPage());
+        Application.Current.MainPage = new NavigationPage(new StartPage());
     }
 
     private void OnExitAppClicked(object sender, EventArgs e)

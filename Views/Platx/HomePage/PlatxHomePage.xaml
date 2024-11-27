@@ -15,7 +15,8 @@
     xmlns:templates="clr-namespace:MauiKit.Views.Apps.Ewallet.Templates"
     xmlns:viewmodels="clr-namespace:MauiKit.ViewModels.Platx.HomePage"
     xmlns:views="clr-namespace:MauiKit.Views"
-    BackgroundColor="{DynamicResource White}">
+    BackgroundColor="{DynamicResource BasePageColor}">
+
 
     <views:BasePage.BindingContext>
         <viewmodels:PlatxHomePageViewModel />
@@ -42,16 +43,35 @@
 
     <views:BasePage.PageContent>
         <ScrollView>
-            <Grid Padding="20" RowSpacing="20">
+            <Grid Padding="20,0,20,20" RowSpacing="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="{OnPlatform MacCatalyst='350', Default='350'}" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <StackLayout Grid.Row="0" Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
+                <StackLayout Grid.Row="0" Spacing="2" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+
+
+                    <Label
+                x:Name="MainLabel"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Style="{StaticResource Title1}"
+                FontSize="40"
+                Text="Please Wait"
+                TextColor="{DynamicResource PrimaryColor}" />
+
+                    <Label
+               FontFamily="FaPro"
+               FontSize="155"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               Text="{x:Static views:FaPro.UserUnlock}"
+               TextColor="{DynamicResource PrimaryColor}"
+               VerticalOptions="Center" />
                     <!-- دائرة العد التنازلي -->
-                    <Frame
+                    <!--<Frame
         WidthRequest="150"
         HeightRequest="150"
         CornerRadius="75"
@@ -61,7 +81,9 @@
         HorizontalOptions="Center"
         VerticalOptions="Center">
                         <Grid>
-                            <!-- النص الداخلي (العد التنازلي) -->
+                            -->
+                    <!-- النص الداخلي (العد التنازلي) -->
+                    <!--
                             <Label
                 x:Name="CountdownLabel"
                 Text="30"
@@ -70,10 +92,10 @@
                 VerticalOptions="Center"
                 TextColor="Black" />
                         </Grid>
-                    </Frame>
+                    </Frame>-->
 
                     <!-- رسالة انتهاء العد -->
-                    <StackLayout
+                    <!--<StackLayout
         x:Name="ResendStack"
         IsVisible="False"
         Orientation="Horizontal"
@@ -98,14 +120,14 @@
                                 <TapGestureRecognizer Tapped="OnResendClicked" />
                             </ImageButton.GestureRecognizers>
                         </ImageButton>
-                    </StackLayout>
+                    </StackLayout>-->
                 </StackLayout>
 
 
                 <VerticalStackLayout Grid.Row="1" Spacing="20">
 
                     <!--  Statistics Graph  -->
-                    <Grid>
+                    <!--<Grid>
                         <Picker
           HorizontalOptions="End"
           ItemDisplayBinding="{Binding Duration}"
@@ -114,8 +136,9 @@
           MinimumWidthRequest="70"
           SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
           SelectedItem="{Binding DataSource[0], Mode=OneTime}" />
-                    </Grid>
-                    <CollectionView
+                    </Grid>-->
+
+                    <!--<CollectionView
                         HorizontalOptions="Center" VerticalOptions="Center"
                         ItemsSource="{Binding TransactionLists}"
                         SelectionMode="None"
@@ -128,9 +151,44 @@
                                 <templates:TransactionItemTemplate />
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
+                    </CollectionView>-->
+
+                    <Label
+                    FontAttributes="Bold"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource Title1}"
+                    Text="Latest Notifications"
+                    FontSize="18"
+                    TextColor="{DynamicResource PrimaryColor}" />
+
+                    <!-- عرض آخر 4 إشعارات -->
+                    <CollectionView
+                    ItemsSource="{Binding LatestTransactionLists}"
+                    SelectionMode="None"
+                    VerticalScrollBarVisibility="Always">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <templates:TransactionItemTemplate />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
                     </CollectionView>
+
+
                 </VerticalStackLayout>
 
+                <VerticalStackLayout Grid.Row="2">
+                    <!-- زر View More -->
+                    <Button
+                              Text="View More"
+                              Command="{Binding ViewMoreCommand}"
+                              BackgroundColor="{DynamicResource PrimaryColor}"
+                              TextColor="White"
+                              HorizontalOptions="Center"
+                              WidthRequest="150" /> 
+                                        </VerticalStackLayout>
                 <controls:SimpleLoadingIndicator Grid.RowSpan="3" />
             </Grid>
         </ScrollView>

@@ -11,6 +11,8 @@ public partial class MaintenancePage : ContentPage
     private void OnExitAppClicked(object sender, EventArgs e)
     {
         // ≈€·«ﬁ «· ÿ»Ìﬁ
-        Process.GetCurrentProcess().Kill();
+        //Process.GetCurrentProcess().Kill();
+        Application.Current.MainPage = new NavigationPage(new UpdatePage(false));
+
     }
 }

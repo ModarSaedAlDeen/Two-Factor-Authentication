@@ -8,7 +8,7 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     NavigationPage.HasBackButton="False"
     NavigationPage.HasNavigationBar="False"
-    BackgroundColor="{DynamicResource White}">
+    BackgroundColor="{DynamicResource BasePageColor}">
 
     <ScrollView VerticalScrollBarVisibility="Never">
         <Grid RowDefinitions="Auto, *, Auto">
@@ -26,7 +26,7 @@
                 
                 <Border
                     Padding="0"
-                    Background="{DynamicResource AccentColor}" 
+                    Background="{DynamicResource PrimaryColor}" 
                     HeightRequest="90"
                     HorizontalOptions="Center"
                     Stroke="{DynamicResource White}"
@@ -75,7 +75,7 @@
                 <Border
                     Grid.Row="4"
                     Padding="15,5"
-                    Background="{DynamicResource AccentColor}"
+                    Background="{DynamicResource PrimaryColor}"
                     HorizontalOptions="Center"
                     Stroke="Transparent"
                     StrokeShape="{RoundRectangle CornerRadius='8'}">
@@ -100,7 +100,7 @@
                     FontAttributes="Bold"
                     HeightRequest="50"
                     Style="{StaticResource PrimaryButtonStyle}"
-                    BackgroundColor="{DynamicResource AccentColor}"
+                    BackgroundColor="{DynamicResource PrimaryColor}"
                     Text="{localization:Translate ButtonTakeTour}" />
 
                 <Button
@@ -109,7 +109,7 @@
                     CornerRadius="14"
                     HeightRequest="50"
                     Text="{localization:Translate ButtonSkip}"
-                    BackgroundColor="{DynamicResource LightOrangeColor}"
+                    BackgroundColor="{DynamicResource PrimaryColor}"
                     TextColor="{DynamicResource White}" />
             </VerticalStackLayout>
         </Grid>

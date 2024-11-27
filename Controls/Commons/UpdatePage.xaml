@@ -8,43 +8,46 @@
              xmlns:localization="clr-namespace:MauiKit.Resources.Translations"
              xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
              xmlns:views="clr-namespace:MauiKit.Views"
-             BackgroundColor="{DynamicResource White}">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource BasePageColor}">
     
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="20">
-
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        
         <!-- النص الافتراضي للرسالة -->
         <Label x:Name="UpdateMessage"
                Text="{localization:Translate Warning}"
                FontAttributes="Bold"
                Style="{StaticResource Title1}"
-               TextColor="{DynamicResource Red}"
+               TextColor="{DynamicResource PrimaryColor}"
                HorizontalTextAlignment="Center"
                IsVisible="False" />
         <Label
                 FontFamily="FaPro"
-                FontSize="60"
+                FontSize="150"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 Text="{x:Static views:FaPro.EngineWarning}"
-                TextColor="{DynamicResource Red}"
+                TextColor="{DynamicResource PrimaryColor}"
                 VerticalOptions="Center" />
 
 
         <Label x:Name="OptionalUpdateMessage"
+               Padding="0,15,0,0"
                Text="{localization:Translate OptionalVersionUpdate}"
                FontSize="18"
                HorizontalOptions="Center"
                HorizontalTextAlignment="Center"
-               TextColor="{DynamicResource Red}"
+               TextColor="{DynamicResource PrimaryColor}"
                IsVisible="False" />
 
 
         <Label x:Name="ForceUpdateMessage"
+               Padding="0,15,0,0"
                Text="{localization:Translate ForceUpdateMessage}"
                FontSize="18"
                HorizontalOptions="Center"
                HorizontalTextAlignment="Center"
-               TextColor="{DynamicResource Red}"
+               TextColor="{DynamicResource PrimaryColor}"
                IsVisible="False" />
 
         <Button
@@ -60,8 +63,8 @@
 
         <Button
                 x:Name="ContinueButton"
-                BackgroundColor="{DynamicResource Orange}"
-                Margin="0,10,0,0"
+                BackgroundColor="{DynamicResource PrimaryColor}"
+                Margin="0,20,0,0"
                 Clicked="OnContinueClicked"
                 CornerRadius="14"
                 FontAttributes="Bold"
@@ -72,7 +75,7 @@
                 IsVisible="False" />
         
         <Button
-                BackgroundColor="{DynamicResource Red}"
+                BackgroundColor="{DynamicResource PrimaryColor}"
                 Margin="0,50,0,0"
                 Clicked="OnExitAppClicked"
                 CornerRadius="14"

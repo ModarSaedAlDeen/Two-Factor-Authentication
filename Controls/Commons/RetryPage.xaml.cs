@@ -31,12 +31,15 @@ public class RetryViewModel
         if (_connectivityService.IsInternetAvailable())
         {
             // ≈–« ﬂ«‰ «·« ’«· »«·≈‰ —‰  „ «Õ«
-            Application.Current.MainPage = new NavigationPage(new PlatxHomePage());
+            //Application.Current.MainPage = new NavigationPage(new PlatxHomePage());
+            Application.Current.MainPage = new NavigationPage(new MaintenancePage());
         }
         else
         {
+            Application.Current.MainPage = new NavigationPage(new MaintenancePage());
+
             // Ì„ﬂ‰ﬂ ⁄—÷ —”«·… √Ê  ‰›Ì– ≈Ã—«¡ ¬Œ—
-            await Application.Current.MainPage.DisplayAlert("Error", "There is no connection until now", "Ok");
+            //await Application.Current.MainPage.DisplayAlert("Error", "There is no connection until now", "Ok");
         }
     }
 }

@@ -8,36 +8,37 @@
              xmlns:localization="clr-namespace:MauiKit.Resources.Translations"
              xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
              xmlns:views="clr-namespace:MauiKit.Views"
-             BackgroundColor="{DynamicResource White}">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource BasePageColor}">
 
-
-    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="20">
-
-
+    <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
         <Label
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
                 Style="{StaticResource Title1}"
+                FontSize="50"
                 Text="{localization:Translate LabelFailed}"
-                TextColor="{DynamicResource Red}" />
+                TextColor="{DynamicResource PrimaryColor}" />
 
         <Label
                 FontFamily="FaPro"
-                FontSize="60"
+                FontSize="135"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 Text="{x:Static views:FaPro.WifiSlash}"
-                TextColor="{DynamicResource Red}"
+                TextColor="{DynamicResource PrimaryColor}"
                 VerticalOptions="Center" />
 
         <Label
+                Padding="0,50,0,0"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 Text="{localization:Translate NoInternetConnection}"
-                TextColor="{DynamicResource Red}" />
+                TextColor="{DynamicResource PrimaryColor}" />
 
         <Button
-                BackgroundColor="{DynamicResource Red}"
+                BackgroundColor="{DynamicResource PrimaryColor}"
+                Margin="0,18,0,0"
                 Command="{Binding RetryCommand}"
                 CornerRadius="14"
                 FontAttributes="Bold"

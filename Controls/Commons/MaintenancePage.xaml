@@ -2,16 +2,91 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiKit.Controls.Commons.MaintenancePage"
-             Title="MaintenancePage">
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="20">
-        <Label Text="التطبيق تحت الصيانة حالياً."
-               FontSize="20"
-               TextColor="Red"
-               HorizontalTextAlignment="Center" />
+             xmlns:animation="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+             xmlns:controls="clr-namespace:MauiKit.Controls"
+             xmlns:handlers="clr-namespace:MauiKit.Handlers"
+             xmlns:localization="clr-namespace:MauiKit.Resources.Translations"
+             xmlns:rg="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+             xmlns:views="clr-namespace:MauiKit.Views"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource BasePageColor}">
 
-        <Button Text="إغلاق التطبيق"
-                BackgroundColor="Red"
-                TextColor="White"
-                Clicked="OnExitAppClicked" />
+
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <Label
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Style="{StaticResource Title1}"
+                FontSize="50"
+                Text="{localization:Translate LabelFailed}"
+                TextColor="{DynamicResource PrimaryColor}" />
+
+        <Label
+                FontFamily="FaPro"
+                FontSize="135"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{x:Static views:FaPro.WindowClose}"
+                TextColor="{DynamicResource PrimaryColor}"
+                VerticalOptions="Center" />
+
+        <Label
+                Padding="0,50,0,0"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="التطبيق تحت الصيانة حالياً."
+                FontSize="20"
+                TextColor="{DynamicResource PrimaryColor}" />
+
+        
+        <Button
+                BackgroundColor="{DynamicResource PrimaryColor}"
+                Margin="0,18,0,0"
+                Clicked="OnExitAppClicked" 
+                CornerRadius="14"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                Text="{localization:Translate ButtonClose}"
+                TextColor="{DynamicResource White}"
+                WidthRequest="200" />
     </StackLayout>
 </ContentPage>
+
+<!--
+    <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+        <Label
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Style="{StaticResource Title1}"
+                FontSize="50"
+                Text="{localization:Translate LabelFailed}"
+                TextColor="{DynamicResource Red}" />
+
+        <Label
+                FontFamily="FaPro"
+                FontSize="135"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{x:Static views:FaPro.WifiSlash}"
+                TextColor="{DynamicResource Red}"
+                VerticalOptions="Center" />
+
+        <Label
+                Padding="0,50,0,0"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{localization:Translate NoInternetConnection}"
+                TextColor="{DynamicResource Red}" />
+
+        <Button
+                BackgroundColor="{DynamicResource Red}"
+                Margin="0,18,0,0"
+                Command="{Binding RetryCommand}"
+                CornerRadius="14"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                Text="{localization:Translate Retry}"
+                TextColor="{DynamicResource White}"
+                WidthRequest="200" />
+    </StackLayout>
+</ContentPage>-->

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiKit.Views.Platx.HomePage.ViewAllFactorAuthNotification"
+             xmlns:templates="clr-namespace:MauiKit.Views.Apps.Ewallet.Templates"
+             xmlns:viewmodels="clr-namespace:MauiKit.ViewModels.Platx.HomePage"
+             xmlns:charts="clr-namespace:MauiKit.Controls.Charts"
+             xmlns:controls="clr-namespace:MauiKit.Controls"
+             xmlns:handlers="clr-namespace:MauiKit.Handlers"
+             xmlns:helpers="clr-namespace:MauiKit.Helpers"
+             xmlns:local="clr-namespace:MauiKit"
+             xmlns:localization="clr-namespace:MauiKit.Resources.Translations"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             xmlns:lvcore="clr-namespace:LiveChartsCore;assembly=LiveChartsCore"
+             xmlns:models="clr-namespace:MauiKit.Models"
+             xmlns:views="clr-namespace:MauiKit.Views"
+             BackgroundColor="{DynamicResource BasePageColor}">
+
+    <ContentPage.Content>
+        <ScrollView Padding="20">
+            <CollectionView
+                ItemsSource="{Binding Notifications}"
+                SelectionMode="None"
+                VerticalScrollBarVisibility="Always">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <templates:TransactionItemTemplate />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

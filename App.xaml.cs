@@ -108,37 +108,38 @@ namespace MauiKit
         }
         private void CheckAppStatus()
         {
-            if (!_connectivityService.IsInternetAvailable())
-            {
-                // عرض صفحة إعادة المحاولة إذا لم يكن هناك اتصال
-                MainPage = new NavigationPage(new RetryPage());
-                return;
-            }
+            //if (!_connectivityService.IsInternetAvailable())
+            //{
+            //    // عرض صفحة إعادة المحاولة إذا لم يكن هناك اتصال
+            //    MainPage = new NavigationPage(new RetryPage());
+            //    return;
+            //}
 
-            if (_maintenanceService.IsUnderMaintenance())
-            {
-                // عرض واجهة الصيانة
-                MainPage = new NavigationPage(new MaintenancePage());
-                return;
-            }
+            //if (_maintenanceService.IsUnderMaintenance())
+            //{
+            //    // عرض واجهة الصيانة
+            //    MainPage = new NavigationPage(new MaintenancePage());
+            //    return;
+            //}
 
-            var updateStatus = _updateService.CheckForUpdate();
-            if (updateStatus.IsUpdateRequired)
-            {
-                // عرض واجهة التحديث
-                MainPage = new NavigationPage(new UpdatePage(updateStatus.IsMandatory));
-                return;
-            }
-            // التحقق من إذا كانت هذه أول مرة يتم فيها فتح التطبيق
-            if (!Preferences.ContainsKey("IsIntroShown") || !Preferences.Get("IsIntroShown", false))
-            {
-                // عرض صفحة Intro App
-                MainPage = new NavigationPage(new StartPage());
-                Preferences.Set("IsIntroShown", true); // تحديث الحالة لتجنب عرضها مرة أخرى
-                return;
-            }
+            //var updateStatus = _updateService.CheckForUpdate();
+            //if (updateStatus.IsUpdateRequired)
+            //{
+            //    // عرض واجهة التحديث
+            //    MainPage = new NavigationPage(new UpdatePage(updateStatus.IsMandatory));
+            //    return;
+            //}
+            //// التحقق من إذا كانت هذه أول مرة يتم فيها فتح التطبيق
+            //if (!Preferences.ContainsKey("IsIntroShown") || !Preferences.Get("IsIntroShown", false))
+            //{
+            //    // عرض صفحة Intro App
+            //    MainPage = new NavigationPage(new StartPage());
+            //    Preferences.Set("IsIntroShown", true); // تحديث الحالة لتجنب عرضها مرة أخرى
+            //    return;
+            //}
             // إذا كان كل شيء على ما يرام، انتقل للصفحة الرئيسية
-            MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new RetryPage());
         }
         public static Page GetMainPage()
             {

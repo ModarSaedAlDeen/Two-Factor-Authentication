@@ -9,7 +9,7 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:views="clr-namespace:MauiKit.Views"
     Title=""
-    BackgroundColor="White"
+    BackgroundColor="{DynamicResource BasePageColor}"
     NavigationPage.HasBackButton="False"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Behaviors>
